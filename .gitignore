@@ -1,0 +1,30 @@
+# Model files
+*.keras
+*.h5
+
+# Data folders
+Scapula data/
+processed_3d/
+sample/
+seg3d/
+
+# nnUNet
+nnUNet_storage/
+tmp_nnunet_labelgen/
+
+# Training outputs
+runs/
+
+# Logs
+*.log
+*.md
+
+# Images (optional)
+Figure_1.png
+
+# Python cache
+__pycache__/
+*.pyc
+
+explanation_and_next_steps.txt
+next_steps.txt
