@@ -6,7 +6,6 @@
 Scapula data/
 processed_3d/
 sample/
-seg3d/
 
 # nnUNet
 nnUNet_storage/

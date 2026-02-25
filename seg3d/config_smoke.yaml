@@ -1,0 +1,43 @@
+project:
+  name: scapula_seg3d_exp1
+  seed: 42
+  device: cpu
+
+paths:
+  # Generated for local cohort in processed_3d/{images,labels}
+  totalseg_root: /home/nikhil/Scapula_Project/SMRI_CT_image/processed_3d
+  totalseg_manifest: /home/nikhil/Scapula_Project/SMRI_CT_image/runs/seg3d_exp1/manifest.csv
+  output_dir: /home/nikhil/Scapula_Project/SMRI_CT_image/runs/seg3d_exp1
+
+labels:
+  classes:
+    # nnUNet scapula pipeline outputs are expected as label ids 1 (scapula), 2 (humerus)
+    - name: scapula
+      ids: [1]
+    - name: humerus
+      ids: [2]
+
+preprocess:
+  target_spacing: [1.5, 1.5, 1.5]
+  patch_size: [128, 128, 96]
+  intensity_window: [-200, 300]
+  normalize: zscore
+
+training:
+  batch_size: 1
+  epochs: 1
+  lr: 0.0003
+  num_workers: 2
+  val_split: 0.20
+  save_best: true
+
+metrics:
+  dice: true
+  hd95: true
+  surface_dice: false
+
+quantification:
+  compute_volume_mm3: true
+  compute_csa_mm2: true
+  compute_mean_hu: true
+  csa_axis: axial
